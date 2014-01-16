@@ -1,0 +1,31 @@
+.altered-select-item {
+    font-size: 1em;
+    float: left;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.altered-select-item dt {
+    padding-right: 0.5em;
+    color: #666666 !important;
+    margin-left: 0;
+    text-transform: none;
+    margin: 0 0 0.25em 0;
+}
+
+.option-select {i
+    font-size: 17px;
+    line-height: 145%;
+    color: rgb(34, 34, 34);
+    border: 1px solid rgb(204, 204, 204);
+    padding: 2px 4px;
+}
+
+.section-header {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
