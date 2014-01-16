@@ -1,0 +1,54 @@
+var Filer = Backbone.Model.extend({});
+
+var Meta = Backbone.Model.extend({
+    initialize: function() {
+        this.convert_for_display('total_contributions');
+        this.convert_for_display('total_expenditures');
+        this.convert_for_display('cash_on_hand');
+        this.convert_for_display('outstanding_loans');
+    },
+
+    convert_for_display: function(key) {
+        this.set(key, commas(parseFloat(this.get(key)).toFixed(0)));
+    }
+});
+
+var Measurement = Backbone.Model.extend({
+    initialize: function() {
+        var amt = this.get('amt');
+        this.set('amt', commas(parseFloat(amt).toFixed(0)));
+    }
+});
+
+var ContributionByState = Measurement.extend({});
+var ContributionByDate = Measurement.extend({});
+var ContributionByZip = Measurement.extend({});
+var TopDonor = Measurement.extend({});
+var Bucket = Measurement.extend({});
+
+var ActiveFiler = Backbone.Model.extend({
+    urlRoot: '//tx-tecreports.herokuapp.com/api/v1/report/',
+
+    url: function() {
+        var base = _.result(this, 'urlRoot');
+        return base + encodeURIComponent(this.id) + '/?callback=?';
+    },
+
+    parse: function(response) {
+        response._meta = new Meta(response._meta);
+        response.contribs_by_state = new StateContributions(response.contribs_by_state);
+        response.top_contribs_by_zip = new ZipContributions(response.top_contribs_by_zip);
+        response.contribs_by_date = new DateContributions(response.contribs_by_date);
+        response.top_ten_donations = new TopDonors(response.top_ten_donations);
+        response.buckets = new Buckets(response.buckets);
+
+        return response;
+    },
+
+    fetchFiler: function(new_id) {
+        this.set({id: new_id}, {silent: true});
+        this.fetch();
+    }
+});
+
+var activeFiler = new ActiveFiler();

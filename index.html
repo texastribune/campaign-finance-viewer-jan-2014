@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>All Things Are Temporary</title>
+  <link rel="stylesheet" href="//s3.amazonaws.com/static.texastribune.org/COMPRESSED/css/8e09a6349689.css">
+  <link rel="stylesheet" type="text/css" href="//s3.amazonaws.com/cdn.texastribune.org/lib/tt-icomoon/0.5.1/style.css">
+  <link rel="stylesheet" type="text/css" href="//s3.amazonaws.com/static.texastribune.org/common/fonts/league-gothic.css">
+  <link rel="stylesheet" type="text/css" href="//s3.amazonaws.com/static.texastribune.org/common/fonts/fonts.css">
+  <link rel="stylesheet" href="dist/style.css">
+</head>
+<body class="flatpage responsive">
+
+<div class="wrapper content-wrapper">
+<section id="site_content" class="content bare">
+    <div class="grid">
+        <header>
+            <h1>Interactive: All Things Are Temporary</h1>
+            <ul class="meta separator clearfix">
+                <li class="byline">by <a href="http://www.texastribune.org/about/staff/ryan-murphy/">Ryan Murphy</a></li>
+                <li>January 15, 2014</li>
+            </ul>
+        </header>
+    </div>
+
+    <div class="grid">
+        <div class="cell w-12 prose">
+          <p>You see? It's curious. Ted did figure it out - time travel. And when we get back, we gonna tell everyone. How it's possible, how it's done, what the dangers are. But then why fifty years in the future when the spacecraft encounters a black hole does the computer call it an 'unknown entry event'? Why don't they know? If they don't know, that means we never told anyone. And if we never told anyone it means we never made it back. Hence we die down here. Just as a matter of deductive logic.</p>
+        </div>
+    </div>
+
+    <div class="grid">
+        <dl class="altered-select-item">
+        <dt>Select Candidate</dt>
+        <select class="option-select" id="filer-select-view">
+            <option>--</option>
+        </select>
+      </dl>
+    </div>
+
+    <div class="grid">
+        <div id="meta-view"></div>
+    </div>
+
+    <div class="grid">
+    <div class="section-header">Top 10 Donations</div>
+    <table class="tt-table striped condensed">
+        <thead>
+            <tr>
+                <th>Contributor</th>
+                <th>Location</th>
+                <th>Date</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody id="top-donors-view"></tbody>
+    </table>
+    </div>
+
+    <div class="grid">
+        <div>Percentage of Contributions by Donation Size</div>
+        <div class="contribution-date-chart" id="bucket-contributions-view"></div>
+    </div>
+
+    <div class="grid">
+    <div class="cell w-6">
+        <div class="section-header">Contributions by State</div>
+        <table class="tt-table striped condensed">
+            <thead>
+                <tr>
+                    <th>State</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody id="state-contributions-view"></tbody>
+        </table>
+    </div>
+    <div class="cell w-6">
+        <div class="section-header">Contributions by ZIP Code</div>
+        <table class="tt-table striped condensed">
+            <thead>
+                <tr>
+                    <th>ZIP Code</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody id="zip-contributions-view"></tbody>
+        </table>
+    </div>
+    </div>
+
+    <div class="grid">
+        <div class="section-header">Contributions by Date</div>
+        <table class="tt-table striped condensed">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody id="date-contributions-view"></tbody>
+        </table>
+    </div>
+
+    <div class="grid footer">
+        Source: TODO | <a href="http://www.texastribune.org/library/data/data-feedback/">Feedback</a> | Follow <a href="http://www.twitter.com/tribnerds">@TribNerds</a> on Twitter.
+    </div>
+
+    <script type="text/template" id="meta-view-template">
+
+    <div class="cell w-6">
+        <table class="tt-table striped condensed">
+            <thead>
+                <tr>
+                    <th>Cycle Start Date</th>
+                    <th>Cycle End Date</th>
+                    <th>View Report</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>7/1/2013</td>
+                    <td>12/31/2013</td>
+                    <td><a href="http://204.65.203.5/public/<%= report_id %>.pdf">PDF</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="cell w-6">
+        <table class="tt-table striped condensed">
+            <thead>
+                <tr>
+                    <th>Contributions</th>
+                    <th>Expenditures</th>
+                    <th>Loans</th>
+                    <th>Cash on Hand</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>$<%= total_contributions %></td>
+                    <td>$<%= total_expenditures %></td>
+                    <td>$<%= outstanding_loans %></td>
+                    <td>$<%= cash_on_hand %></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    </script>
+
+    <script type="text/template" id="state-contributions-view-template">
+        <tr>
+            <td><%= state %></td>
+            <td>$<%= amt %></td>
+        </tr>
+    </script>
+
+    <script type="text/template" id="zip-contributions-view-template">
+        <tr>
+            <td><%= zip %></td>
+            <td>$<%= amt %></td>
+        </tr>
+    </script>
+
+    <script type="text/template" id="date-contributions-view-template">
+        <tr>
+            <td><%= date %></td>
+            <td>$<%= amt %></td>
+        </tr>
+    </script>
+
+    <script type="text/template" id="top-donors-view-template">
+        <tr>
+            <td><%= first_name + ' ' + last_entity_name %></td>
+            <td><%= city + ', ' + state %></td>
+            <td><%= date %></td>
+            <td>$<%= amt %></td>
+        </tr>
+    </script>
+
+
+    <script type="text/template" id="contrib-buckets-view-template">
+        <div class="row">
+            <div class="row-info"><%= name %><span class="row-amt">$<%= amt %> | <%= percent_of_total %>%</span>div>
+            <div class="row-bar" style="width: <%= percent_of_total %>%;"></div>
+        </div>
+    </script>
+
+</section>
+</div>
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="//s3.amazonaws.com/static.texastribune.org/common/vendor/jquery/1.7.2/jquery.min.js"><\/script>')</script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+<script>window.jQuery.ui || document.write('<script src="//s3.amazonaws.com/static.texastribune.org/common/vendor/jqueryui/jquery-ui-1.8.18.min.js"><\/script>')</script>
+<script src="//s3.amazonaws.com/static.texastribune.org/common/vendor/modernizr/modernizr.min.js"></script>
+
+<script src="dist/libs/underscore.js"></script>
+<script src="dist/libs/backbone.js"></script>
+
+<script src="dist/app.js"></script>
+
+</body>
+</html>
