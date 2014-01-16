@@ -59,8 +59,8 @@
     </div>
 
     <div class="grid">
-        <div>Percentage of Contributions by Donation Size</div>
-        <div class="contribution-date-chart" id="bucket-contributions-view"></div>
+        <div class="section-header">Percentage of Contributions by Donation Size</div>
+        <div class="bucket-contributions" id="bucket-contributions-view"></div>
     </div>
 
     <div class="grid">
@@ -151,41 +151,41 @@
     </script>
 
     <script type="text/template" id="state-contributions-view-template">
-        <tr>
-            <td><%= state %></td>
-            <td>$<%= amt %></td>
-        </tr>
+    <tr>
+        <td><%= state %></td>
+        <td>$<%= amt %></td>
+    </tr>
     </script>
 
     <script type="text/template" id="zip-contributions-view-template">
-        <tr>
-            <td><%= zip %></td>
-            <td>$<%= amt %></td>
-        </tr>
+    <tr>
+        <td><%= zip %></td>
+        <td>$<%= amt %></td>
+    </tr>
     </script>
 
     <script type="text/template" id="date-contributions-view-template">
-        <tr>
-            <td><%= date %></td>
-            <td>$<%= amt %></td>
-        </tr>
+    <tr>
+        <td><%= date %></td>
+        <td>$<%= amt %></td>
+    </tr>
     </script>
 
     <script type="text/template" id="top-donors-view-template">
-        <tr>
-            <td><%= first_name + ' ' + last_entity_name %></td>
-            <td><%= city + ', ' + state %></td>
-            <td><%= date %></td>
-            <td>$<%= amt %></td>
-        </tr>
+    <tr>
+        <td><%= first_name + ' ' + last_entity_name %></td>
+        <td><%= city + ', ' + state %></td>
+        <td><%= date %></td>
+        <td>$<%= amt %></td>
+    </tr>
     </script>
 
 
     <script type="text/template" id="contrib-buckets-view-template">
-        <div class="row">
-            <div class="row-info"><%= name %><span class="row-amt">$<%= amt %> | <%= percent_of_total %>%</span>div>
-            <div class="row-bar" style="width: <%= percent_of_total %>%;"></div>
-        </div>
+    <div class="row">
+        <div class="row-info"><%= name_display %><span class="row-amt">$<%= amt_display %> | <%= percent_of_total %>%</span></div>
+        <div class="row-bar" style="width: <%= percent_of_total %>%;"></div>
+    </div>
     </script>
 
 </section>

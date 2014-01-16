@@ -18,7 +18,7 @@ var scriptFiles = [
 var styleFiles = 'src/css/*.css';
 
 gulp.task('compile', function() {
-    gulp.src(_.union(preFile, scriptFiles, postFile, ['!src/libs/*.js']))
+    gulp.src(_.union(scriptFiles, ['!src/libs/*.js']))
         .pipe(concat('app.js'))
         .pipe(gulp.dest('./dist/'))
         .pipe(rename('app.min.js'))

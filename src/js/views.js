@@ -2,7 +2,7 @@ var FilerOptionView = Backbone.View.extend({
     tagName: 'div',
 
     template: _.template(
-        '<option value="<%= report_id %>"><%= display_name %> (<%= party %>) - <%= race %></option>'
+        '<option value="<%= report_id %>"><%= display_name %> (<%= party %>) - <%= race %> <%= type %></option>'
     ),
 
     render: function() {
@@ -171,4 +171,4 @@ new StateContributionsView({model: activeFiler});
 new ZipContributionsView({model: activeFiler});
 new DateContributionsView({model: activeFiler});
 new TopDonorsView({model: activeFiler});
-// new BucketsView({model: activeFiler});
+new BucketsView({model: activeFiler});
