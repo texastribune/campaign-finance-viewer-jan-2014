@@ -60,7 +60,7 @@ var ActiveFiler = Backbone.Model.extend({
 
         response._meta = new Meta(response._meta);
         response.contribs_by_state = new StateContributions(response.contribs_by_state);
-        response.top_contribs_by_zip = new ZipContributions(response.top_contribs_by_zip);
+        // response.top_contribs_by_zip = new ZipContributions(response.top_contribs_by_zip);
         response.contribs_by_date = new DateContributions(response.contribs_by_date);
         response.top_ten_donations = new TopDonors(response.top_ten_donations);
         response.buckets = new Buckets(response.buckets);
@@ -281,7 +281,7 @@ new FilerSelectView({
 
 new MetaView({model: activeFiler});
 new StateContributionsView({model: activeFiler});
-new ZipContributionsView({model: activeFiler});
+// new ZipContributionsView({model: activeFiler});
 new DateContributionsView({model: activeFiler});
 new TopDonorsView({model: activeFiler});
 new BucketsView({model: activeFiler});

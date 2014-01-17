@@ -168,7 +168,7 @@ new FilerSelectView({
 
 new MetaView({model: activeFiler});
 new StateContributionsView({model: activeFiler});
-new ZipContributionsView({model: activeFiler});
+// new ZipContributionsView({model: activeFiler});
 new DateContributionsView({model: activeFiler});
 new TopDonorsView({model: activeFiler});
 new BucketsView({model: activeFiler});
